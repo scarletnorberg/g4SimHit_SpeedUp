@@ -1,5 +1,7 @@
-cmsRun PPD-RunIISummer20UL17SIM-0_015_cfg.py &> PPD-RunIISummer20UL17SIM-0_015_cfg.txt 
-cmsRun PPD-RunIISummer20UL17SIM-0_2_cfg.py &> PPD-RunIISummer20UL17SIM-0_2_cfg.txt
-cmsRun PPD-RunIISummer20UL17SIM-0_25_cfg.py &> PPD-RunIISummer20UL17SIM-0_25_cfg.txt
-cmsRun PPD-RunIISummer20UL17SIM-0_3_cfg.py &> PPD-RunIISummer20UL17SIM-0_3_cfg.txt
-cmsRun PPD-RunIISummer20UL17SIM-0_45_cfg.py &> PPD-RunIISummer20UL17SIM-0_45_cfg.txt
+#!/bin/bash
+
+for VAL in 0.015 0.2 0.25 0.3 0.45; do
+	LOG=log_${VAL/0./}.txt
+	cmsRun varyParam.py $VAL >& $LOG
+	echo $VAL $(grep "Total loop" $LOG | tail -n 1 | rev | cut -d' ' -f1 | rev)
+done

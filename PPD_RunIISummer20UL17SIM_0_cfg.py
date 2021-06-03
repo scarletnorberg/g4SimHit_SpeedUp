@@ -21,8 +21,6 @@ process.load('Configuration.StandardSequences.MagneticField_cff')
 process.load('Configuration.StandardSequences.SimIdeal_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
-#process.load('SimG4Core.Application.g4SimHits_cfi')
-#SimG4Core/Application/python/g4SimHits_cfi.py
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1000),
     output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
@@ -30,7 +28,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-        fileNames = cms.untracked.vstring('file:root://cmsxrootd.fnal.gov//store/user/snorberg/GEANT/PPD-RunIISummer20UL17GEN-00001.root'),
+    fileNames = cms.untracked.vstring('file:PPD-RunIISummer20UL17GEN-00001.root'),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -78,7 +76,7 @@ process.RAWSIMoutput = cms.OutputModule("PoolOutputModule",
         filterName = cms.untracked.string('')
     ),
     eventAutoFlushCompressedSize = cms.untracked.int32(20971520),
-    fileName = cms.untracked.string('file:PPD-RunIISummer20UL17Sim-0_3.root'),
+    fileName = cms.untracked.string('file:PPD-RunIISummer20UL17Sim-0_015.root'),
     outputCommands = process.RAWSIMEventContent.outputCommands,
     splitLevel = cms.untracked.int32(0)
 )
@@ -113,12 +111,10 @@ process = addMonitoring(process)
 from FWCore.ParameterSet.Utilities import convertToUnscheduled
 process=convertToUnscheduled(process)
 
-
-# Customisation from command line
-from SimG4Core.Application.g4SimHits_cfi import *
-process.g4SimHits.MagneticField.ConfGlobalMFM.OCMS.StepperParam.EnergyThSimple = cms.double(0.30)
-
 # Add early deletion of temporary data products to reduce peak memory need
 from Configuration.StandardSequences.earlyDeleteSettings_cff import customiseEarlyDelete
 process = customiseEarlyDelete(process)
 # End adding early deletion
+
+from Validation.Performance.TimeMemorySummary import customise
+process = customise(process)
