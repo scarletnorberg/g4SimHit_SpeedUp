@@ -17,3 +17,4 @@ one for the desired parameters and the other for the values.
 
 The first script iterates all the values for each parameter, does **cmsRun PPD_RunIISummer20UL17SIM_0_cfg.py**,
 logs the summary of the run, and outputs the parameter, the value and the time it took to run through all the events.
+Additionally, it produces a root file for each parameter and value.
