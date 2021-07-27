@@ -16,7 +16,7 @@
 ## and all the desired values (assiming all parameters share them) in another.
 ## The other script calls each list and loops over their entries.
 
-parameters=(EnergyThSimple RusRoHcalNeutron)
+parameters=(RusRoEcalGamma RusRoHcalGamma RusRoMuonIronGamma RusRoHcalNeutron RusRoEcalNeutron RusRoMuonIronNeutron)
 
-values=(0.1 0.2)
+values=(0.1 0.2 0.3 0.4 0.5 0.7 0.8 0.9 1.0)
 

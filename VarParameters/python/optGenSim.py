@@ -30,7 +30,7 @@ if paramValueCounter != len(options.paramValues):
     raise ValueError("Used {} paramValues, but {} were provided".format(paramValueCounter,len(options.paramValues)))
 _pnametmp = '_'.join(_pnames)
 
-options._root = "sim_"+str(options.paramNames)+"_"+str(options.paramValues)
+options._root = "sim_"+str(options.paramNames).strip("[']")+"_"+str(options.paramValues).strip("[']")
 
 
 def resetSeeds(process,options):
