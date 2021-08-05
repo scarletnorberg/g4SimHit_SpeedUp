@@ -18,4 +18,4 @@
 
 parameters=(RusRoEcalGamma RusRoHcalGamma RusRoMuonIronGamma RusRoHcalNeutron RusRoEcalNeutron RusRoMuonIronNeutron)
 
-values=(0.1 0.01 0.001 0.0001 0.00001)
+values=(0.1 0.2 0.3 0.4 0.5 0.7 0.8 0.9 1.0)
