@@ -41,10 +41,6 @@ parameters[RusRoMuonIronNeutron]=RusRo_vals[@]
 #   done
 #done
 
-<<<<<<< HEAD
 #for par in "${!parameters[@]}"; do
 #    echo $par ${parameters[@]}
 #done
-=======
-values=(0.1 0.2 0.3 0.4 0.5 0.7 0.8 0.9 1.0)
->>>>>>> 99ed6e6c862dc85aae0de8903144f62a8787f318
