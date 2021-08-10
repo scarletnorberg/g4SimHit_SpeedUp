@@ -27,8 +27,11 @@ class ProductionCut(ParamModifier):
         process.g4SimHits.Physics.DefaultCutValue = cms.double(self.params[0])
         return process
 
-
-# Magnetic Field parameters
+#################################
+#                               #
+##  Magnetic Field parameters  ##
+#                               #
+#################################
 
 class EnergyThSimple(ParamModifier):
     def __init__(self):
@@ -58,9 +61,59 @@ class DeltaIntersectionSimple(ParamModifier):
         process.g4SimHits.MagneticField.ConfGlobalMFM.OCMS.StepperParam.DeltaIntersectionSimple = cms.double(self.params[0])
         return process
 
+##########################
+#                        #  
+##  Physics parameters  ##
+#                        #    
+##########################
 
+class RusRoEcalElectron(ParamModifier):
+    def __init__(self):
+        super(RusRoEcalElectron,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.Physics.RusRoEcalElectron = cms.double(self.params[0])
+        return process
 
-# Russian Roulette parameters
+class RusRoHcalElectron(ParamModifier):
+    def __init__(self):
+        super(RusRoHcalElectron,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.Physics.RusRoHcalElectron = cms.double(self.params[0])
+        return process
+
+class RusRoMuonIronElectron(ParamModifier):
+    def __init__(self):
+        super(RusRoMuonIronElectron,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.Physics.RusRoMuonIronElectron = cms.double(self.params[0])
+        return process
+
+class RusRoPreShowerElectron(ParamModifier):
+    def __init__(self):
+        super(RusRoPreShowerElectron,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.Physics.RusRoPreShowerElectron = cms.double(self.params[0])
+        return process
+
+class RusRoCastorElectron(ParamModifier):
+    def __init__(self):
+        super(RusRoCastorElectron,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.Physics.RusRoCastorElectron = cms.double(self.params[0])
+        return process
+
+class RusRoWorldElectron(ParamModifier):
+    def __init__(self):
+        super(RusRoWorldElectron,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.Physics.RusRoWorldElectron = cms.double(self.params[0])
+        return process
+
+##################################
+#                                #
+##  StackingAction  parameters  ##
+#                                #
+##################################
 
 class RusRoGammaEnergyLimit(ParamModifier):
     def __init__(self):
@@ -206,5 +259,62 @@ class RusRoWorldProton(ParamModifier):
     def apply(self, process):
         process.g4SimHits.StackingAction.RusRoWorldProton = cms.double(self.params[0])
         return process
+
+class RusRoGammaEnergyLimit(ParamModifier):
+    def __init__(self):
+        super(RusRoGammaEnergyLimit,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoGammaEnergyLimit = cms.double(self.params[0])
+        return process
+
+class RusRoNeutronEnergyLimit(ParamModifier):
+    def __init__(self):
+        super(RusRoNeutronEnergyLimit,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoNeutronEnergyLimit = cms.double(self.params[0])
+        return process
+
+class RusRoEcalProton(ParamModifier):
+    def __init__(self):
+        super(RusRoEcalProton,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoEcalProton = cms.double(self.params[0])
+        return process
+
+class RusRoHcalProton(ParamModifier):
+    def __init__(self):
+        super(RusRoHcalProton,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoHcalProton = cms.double(self.params[0])
+        return process
+
+class RusRoMuonIronProton(ParamModifier):
+    def __init__(self):
+        super(RusRoMuonIronProton,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoMuonIronProton = cms.double(self.params[0])
+        return process
+
+class RusRoPreShowerProton(ParamModifier):
+    def __init__(self):
+        super(RusRoPreShowerProton,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoPreShowerProton = cms.double(self.params[0])
+        return process
+
+class RusRoCastorProton(ParamModifier):
+    def __init__(self):
+        super(RusRoCastorProton,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoCastorProton = cms.double(self.params[0])
+        return process
+
+class RusRoWorldProton(ParamModifier):
+    def __init__(self):
+        super(RusRoWorldProton,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoWorldProton = cms.double(self.params[0])
+        return process
+
 
 

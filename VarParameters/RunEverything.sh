@@ -17,15 +17,19 @@
 declare -A parameters
 
 # declare the list of values
-RusRo_vals=(0.1 0.01 0.001 0.0001 0.00001)
+Energy_vals=(5 10 20 50 100 150 200)
+#RusRo_vals=(0.1 0.01 0.001 0.0001 0.00001)
 
 # assigning array elements a specific value list
-parameters[RusRoEcalGamma]=RusRo_vals[@]
-parameters[RusRoHcalGamma]=RusRo_vals[@]
-parameters[RusRoMuonIronGamma]=RusRo_vals[@]
-parameters[RusRoHcalNeutron]=RusRo_vals[@]  
-parameters[RusRoEcalNeutron]=RusRo_vals[@] 
-parameters[RusRoMuonIronNeutron]=RusRo_vals[@]
+parameters[RusRoGammaEnergyLimit]=Energy_vals[@]
+parameters[RusRoNeutronEnergyLimit]=Energy_vals[@]
+
+#parameters[RusRoEcalGamma]=RusRo_vals[@]
+#parameters[RusRoHcalGamma]=RusRo_vals[@]
+#parameters[RusRoMuonIronGamma]=RusRo_vals[@]
+#parameters[RusRoHcalNeutron]=RusRo_vals[@]  
+#parameters[RusRoEcalNeutron]=RusRo_vals[@] 
+#parameters[RusRoMuonIronNeutron]=RusRo_vals[@]
 
 
 
