@@ -109,6 +109,14 @@ class RusRoWorldElectron(ParamModifier):
         process.g4SimHits.Physics.RusRoWorldElectron = cms.double(self.params[0])
         return process
 
+class RusRoElectronEnergyLimit(ParamModifier):
+    def __init__(self):
+        super(RusRoElectronEnergyLimit,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.Physics.RusRoElectronEnergyLimit = cms.double(self.params[0])
+        return process
+
+
 ##################################
 #                                #
 ##  StackingAction  parameters  ##
@@ -205,6 +213,7 @@ class RusRoCastorNeutron(ParamModifier):
     def apply(self, process):
         process.g4SimHits.StackingAction.RusRoCastorNeutron = cms.double(self.params[0])
         return process
+
 class RusRoWorldNeutron(ParamModifier):
     def __init__(self):
         super(RusRoWorldNeutron,self).__init__(1)
@@ -273,6 +282,14 @@ class RusRoNeutronEnergyLimit(ParamModifier):
     def apply(self, process):
         process.g4SimHits.StackingAction.RusRoNeutronEnergyLimit = cms.double(self.params[0])
         return process
+
+class RusRoProtonEnergyLimit(ParamModifier):
+    def __init__(self):
+        super(RusRoProtonEnergyLimit,self).__init__(1)
+    def apply(self, process):
+        process.g4SimHits.StackingAction.RusRoProtonEnergyLimit = cms.double(self.params[0])
+        return process
+
 
 class RusRoEcalProton(ParamModifier):
     def __init__(self):
