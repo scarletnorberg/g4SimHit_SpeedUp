@@ -23,7 +23,7 @@ process.load('Configuration.StandardSequences.SimIdeal_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000),
+    input = cms.untracked.int32(1),
     output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
 )
 
@@ -119,3 +119,14 @@ process = customiseEarlyDelete(process)
 
 from Validation.Performance.TimeMemorySummary import customise
 process = customise(process)
+
+# Customisation from command line
+for p in options._params:
+        process = p.apply(process)
+
+# To test if the values of the parameter are changing.
+# Make sure to add dump=True in the cmsRun command in the Script
+if options.dump:
+    print process.dumpPython()
+    sys.exit(0)
+
