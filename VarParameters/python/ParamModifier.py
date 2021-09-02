@@ -295,14 +295,6 @@ class RusRoNeutronEnergyLimit(ParamModifier):
         process.g4SimHits.StackingAction.RusRoNeutronEnergyLimit = cms.double(self.params[0])
         return process
 
-class RusRoProtonEnergyLimit(ParamModifier):
-    def __init__(self):
-        super(RusRoProtonEnergyLimit,self).__init__(1)
-    def apply(self, process):
-        process.g4SimHits.StackingAction.RusRoProtonEnergyLimit = cms.double(self.params[0])
-        return process
-
-
 class RusRoEcalProton(ParamModifier):
     def __init__(self):
         super(RusRoEcalProton,self).__init__(1)
