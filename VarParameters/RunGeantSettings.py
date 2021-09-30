@@ -1,10 +1,6 @@
 ### imports ###
-#import FWCore.ParameterSet.Config as cms
-
-#from Configuration.Eras.Era_Run2_2017_cff import Run2_2017
-#from g4SimHit_SpeedUp.VarParameters.optGenSim import options
-
-#import PPD_RunIISummer20UL17SIM_0_cfg.py
+import os       # to use operating-system-dependent functionalities
+import re       # to use regular expressions matching operations
 
 ### Values ###
 
@@ -17,7 +13,7 @@ Energy_vals = [200, 250]
 
 parameters = dict()  # initialization the dictionary
 
-## adding key-value pairs
+## adding key-value pairs 
 parameters['RusRoGammaEnergyLimit']=Energy_vals
 parameters['RusRoElectronEnergyLimit']=Energy_vals
 
@@ -30,29 +26,17 @@ for PARAM, VALUES in parameters.items():       # loops key-value pairs
 	for VAL in VALUES:		       # loops the values 
 		print(PARAM,VAL)               # prints the current parameter and value in the loop
 		
-		## opening and writing the log without the with-statement
-		#log = 'log_'+PARAM+'_'+str(VAL)+'.txt'
-		#print(log)
-		#print(" ")
-		#LOG = open(log,'w')
-		#LOG.write('testing')
-		#LOG.close()
 
-		## opening and writing the LOG with the with-statement
-		with open('log_'+PARAM+'_'+str(VAL)+'.txt','w') as LOG:
-			## writing into the LOG test
-			#LOG.write('testing '+PARAM+' with value '+str(VAL))
-			#LOG.close()
-			
-			LOG.write(str(execfile("PPD_RunIISummer20UL17SIM_0_cfg.py")))
-			#LOG.write(run)
-			LOG.close()
+		INPUT = str('paramNames=%s paramValues=%s'%(PARAM,VAL))
+                LOG = "log_"+PARAM+"_"+str(VAL)
+		os.system("cmsRun PPD_RunIISummer20UL17SIM_0_cfg.py "+INPUT+" >& "+LOG+".txt")                                 # cmsRun of config into LOG
+		#os.system("python PPD_RunIISummer20UL17SIM_0_cfg.py "+INPUT+" >& log_"+PARAM+"_"+str(VAL)+".txt dump=1")      # config dump into LOG
+		
+		## run-time print
 
+		log = open("log_"+PARAM+"_"+str(VAL)+".txt","r")   # open to read the log file
+		run_time = "Total loop"                            # string to search in th elog
 
-			#cmsRun PPD_RunIISummer20UL17SIM_0_cfg.py paramNames=PAR paramValues=VAL >& $LOG     # logs the cmsRun, parsing the current paramter and value
-        		#run = execfile("python PPD_RunIISummer20UL17SIM_0_cfg.py paramNames="+PARAM+" paramValues="+str(VAL))   # running the config file ...
-			# for-loop to write the output of running the config into the LOG file 
-			#for output in execfile('PPD_RunIISummer20UL17SIM_0_cfg.py'):
-				#LOG.write(output)
-				#LOG.close()
-				#print(VAL, grep("Total loop", LOG | tail -n 1 | rev | cut -d' ' -f1 | rev))
+		for line in log:                         # loop through the all the lines in the log
+			if re.search(run_time, line):    
+				print(line)              # print the line in the log that contains the specified string
